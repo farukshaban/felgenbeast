@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@pxwlab/katana-snx": "^1.30.6",
     "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "18.2.0",
