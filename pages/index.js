@@ -1,47 +1,27 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import React, { Fragment } from 'react'
+import { Header } from '@pxwlab/katana-snx'
 
-import { getSortedPostsData } from '../lib/posts';
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
-
-
-
-export default function Home({allPostsData}) {
+function Demo() {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[Software developer with exponential experience in Atomem DOO]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+    <Fragment>
+      <Header onSearch={(data) => console.log(data)}>
+        <Header.NavigationItem label='1st level' href='#' />
+        <Header.NavigationItem label='1st level nested'>
+          <Header.NavigationItem label='2nd level' href='#' />
+          <Header.NavigationItem label='2nd level' href='#' />
+          <Header.NavigationItem label='2nd level' href='#' />
+        </Header.NavigationItem>
+        <Header.NavigationItem label='1st level 2xnested'>
+          {/* Note the nested prop here */}
+          <Header.NavigationItem label='2nd level nested' nested>
+            <Header.NavigationItem label='3rd level' href='#' />
+            <Header.NavigationItem label='3rd level' href='#' />
+            <Header.NavigationItem label='3rd level' href='#' />
+          </Header.NavigationItem>
+        </Header.NavigationItem>
+      </Header>
+    </Fragment>
   )
 }
+
+export default Demo
