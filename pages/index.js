@@ -1,3 +1,5 @@
+import '@pxwlab/katana-snx/katana-components.css'
+import '@pxwlab/katana-snx/katana-scripts.js'
 import React, { Fragment } from 'react'
 import { Header } from '@pxwlab/katana-snx'
 
